@@ -7,15 +7,15 @@ module Enumerable
     end
          
     def my_each_with_index
-        k =0;
+        k = 0;
         for i in 0...self.length
-        yield(self[i],k)
-        k+=1
+        yield(self[i], k)
+        k += 1
     end
     end
          
     def my_select(&block)
-        result =[]
+        result = []
         self.each do |element|
           result << element if block.call(element) == true
     end
@@ -54,7 +54,7 @@ module Enumerable
     end
 
     def my_map(&block)
-    result =[]
+    result = []
     self.my_each do |i|
     result << block.call(i)
     end
