@@ -17,7 +17,7 @@ module Enumerable
     def my_select(&block)
         result = []
         self.each do |element|
-          result << element if block.call(element) == true
+        result << element if block.call(element) == true
     end
         result
     end
@@ -35,48 +35,55 @@ module Enumerable
         
 
     def my_none?
-        none = false
-        my_each do |element|
-        if yield(element)
-                none = false
-                break
-        end
-    end
-        none
+        result = true
+        self.each{|element| result = false if yield(element)}
+        result
     end
 
-    def my_count
+
+
+
+    def my_count(x=nil)
         count = 0
-        self.my_each do |element| count += 1
-      
+        if block_given?
+            self.my_each { |el| count += 1 if yield el }
+        elsif x
+            self.my_each { |el| count += 1 if el == x }
+        else
+            count = self.length
         end
-         count
+        count
     end
+
+ 
 
     def my_map(&block)
-    result = []
-    self.my_each do |i|
-    result << block.call(i)
-    end
-    result
+      result = []
+      self.my_each do |i|
+      result << block.call(i)
+      end
+      result
     end
 
 
     def my_inject element=0
-    result = element
-    self.my_each do |i|
+      result = element
+      self.my_each do |i|
       result = yield(result, i)
     end
-    result
+      result
     end
 
-    def multiply_els
-    self.my_inject(1){|x, y| x * y}
+def multiply_els
+      self.my_inject(1){|x, y| x * y}
     end
 
 end
-puts [2,4,5].multiply_els  
-    
+
+   puts [2,3,1,4].my_count{|x| x%2 == 0}
     
 
-end
+# ary = [1, 2, 4, 2]
+# puts ary.count                  #=> 4
+# puts ary.count(2)               #=> 2
+# puts ary.count { |x| x%2 == 0 } #=> 3
