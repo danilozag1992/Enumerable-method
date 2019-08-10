@@ -70,5 +70,3 @@ module Enumerable
     self.my_inject(1) { |x, y| x * y }
   end
 end
-
-puts [2, 3, 1, 4].my_count { |x| x % 2 == 0 }
