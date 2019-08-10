@@ -27,21 +27,16 @@ module Enumerable
         true
     end
 
-
     def my_any?
         self.my_each { |element| return true if yield(element)}
         false
     end
         
-
     def my_none?
         result = true
         self.each{|element| result = false if yield(element)}
         result
     end
-
-
-
 
     def my_count(x=nil)
         count = 0
@@ -55,8 +50,6 @@ module Enumerable
         count
     end
 
- 
-
     def my_map(&block)
       result = []
       self.my_each do |i|
@@ -64,7 +57,6 @@ module Enumerable
       end
       result
     end
-
 
     def my_inject element=0
       result = element
