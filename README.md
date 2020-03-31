@@ -1,7 +1,7 @@
 # Enumerable-method
 Here we coded some of the basic methods that are used in Ruby language
 
-## Contributors
+## Developers
 
 * [Adama Chubiyojo Desmond](https://github.com/kobiyoyo) [(Email)](mailto:Adamachubi@gmail.com)
 
